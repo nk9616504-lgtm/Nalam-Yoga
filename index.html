@@ -119,11 +119,56 @@
             color: var(--text-light);
         }
 
-        /* Responsive Video Container */
+        /* Animated Container */
+        .animated-container {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(180deg, #eaf4ee 0%, #d8ece0 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #cce2d5;
+        }
+
+        .animated-container svg {
+            width: 80%;
+            height: 110px;
+        }
+
+        /* Breathing Chest Pulse Effect */
+        .breath-chest {
+            animation: breatheChest 4s infinite ease-in-out;
+            transform-origin: 45px 50px;
+        }
+
+        @keyframes breatheChest {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.3); }
+        }
+
+        .breath-indicator {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 4px;
+            animation: fadeInOut 4s infinite ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Video Container */
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             border-radius: 12px;
             overflow: hidden;
@@ -133,10 +178,8 @@
 
         .video-container iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             border: 0;
         }
 
@@ -261,7 +304,7 @@
         <h2 class="category-title" id="secNight">🌙 இரவுக் காலம் & நல்ல தூக்கம் (Night Routine)</h2>
         <div class="grid">
             
-            <!-- Shavasana -->
+            <!-- Shavasana Animated -->
             <div class="card">
                 <div>
                     <div class="card-header">
@@ -269,8 +312,25 @@
                         <div class="pose-sub">Corpse Pose</div>
                     </div>
                     
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/2a4b8Z5cIUk" title="Shavasana Yoga Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="animated-container">
+                        <svg viewBox="0 0 160 80">
+                            <!-- Mat -->
+                            <rect x="10" y="60" width="140" height="6" rx="3" fill="#a4c3b2"/>
+                            <!-- Pillow -->
+                            <rect x="15" y="52" width="18" height="8" rx="3" fill="#d8e2dc"/>
+                            <!-- Head -->
+                            <circle cx="24" cy="50" r="7" fill="#f7d5b8"/>
+                            <!-- Body & Legs -->
+                            <rect x="31" y="49" width="45" height="10" rx="4" fill="#2d6a4f"/>
+                            <!-- Animated Breathing Chest -->
+                            <rect class="breath-chest" x="35" y="47" width="20" height="5" rx="2" fill="#52b788"/>
+                            <rect x="76" y="50" width="55" height="8" rx="4" fill="#1b4332"/>
+                            <!-- Feet -->
+                            <ellipse cx="132" cy="52" rx="3" ry="5" fill="#f7d5b8"/>
+                            <!-- Arms -->
+                            <rect x="40" y="57" width="30" height="4" rx="2" fill="#f7d5b8"/>
+                        </svg>
+                        <div class="breath-indicator" id="breathText">🌬️ மெதுவாக மூச்சை உள்ளே இழுத்து வெளியே விடவும்</div>
                     </div>
 
                     <div class="steps-box">
@@ -287,7 +347,7 @@
                 </div>
             </div>
 
-            <!-- Anulom Vilom -->
+            <!-- Anulom Vilom Video -->
             <div class="card">
                 <div>
                     <div class="card-header">
@@ -427,6 +487,7 @@
                     "தலையைச் சற்று மேலே தூக்கி 15-30 வினாடிகள் இருக்கவும்."
                 ],
                 p4Btn: "டைமர் தொடங்கு (3 நிமி)",
+                breathText: "🌬️ மெதுவாக மூச்சை உள்ளே இழுத்து வெளியே விடவும்",
                 startBtn: "தொடங்கு",
                 pauseBtn: "நிறுத்து (Pause)",
                 resetBtn: "மீட்டமை",
@@ -467,6 +528,7 @@
                     "Hold the posture gently for 15-30 seconds."
                 ],
                 p4Btn: "Start Timer (3 min)",
+                breathText: "🌬️ Inhale deeply and exhale gently",
                 startBtn: "Start",
                 pauseBtn: "Pause",
                 resetBtn: "Reset",
@@ -489,6 +551,7 @@
             document.getElementById('p1Title').innerText = langData.p1Title;
             updateList('p1Steps', langData.p1Steps);
             document.getElementById('p1Btn').innerText = langData.p1Btn;
+            document.getElementById('breathText').innerText = langData.breathText;
 
             document.getElementById('p2Title').innerText = langData.p2Title;
             updateList('p2Steps', langData.p2Steps);
