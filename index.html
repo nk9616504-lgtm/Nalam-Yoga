@@ -1,497 +1,375 @@
 <!DOCTYPE html>
-<html lang="ta" class="scroll-smooth">
+<html lang="ta">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>நலம் யோகா | Nalam Yoga & Wellness</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sage: {
-                            50: '#f4f7f4',
-                            100: '#e3ebe3',
-                            200: '#c8d9c8',
-                            300: '#a3be9f',
-                            400: '#7fa37a',
-                            500: '#5f8759',
-                            600: '#496b44',
-                            700: '#3a5436',
-                            800: '#30442d',
-                            900: '#283826',
-                        },
-                        warmbg: '#FAF8F5',
-                        earth: '#8C6D58',
-                        warmgray: '#78716C'
-                    },
-                    fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Mukta Malar', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>நலம் யோகா - Nalam Yoga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Animations */
-        @keyframes breatheBall {
-            0%, 100% { transform: scale(0.85); opacity: 0.7; }
-            50% { transform: scale(1.35); opacity: 1; }
+        :root {
+            --primary: #2d6a4f;
+            --primary-light: #52b788;
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --text: #1d2d44;
+            --text-light: #6c757d;
+            --accent: #d8f3dc;
+            --border: #e9ecef;
         }
-        .breathe-animation {
-            animation: breatheBall 8s ease-in-out infinite;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(227, 235, 227, 0.7);
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding-bottom: 40px;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        header {
+            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        ::-webkit-scrollbar-track {
-            background: #f4f7f4;
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #a3be9f;
-            border-radius: 4px;
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7fa37a;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .pose-svg {
-            stroke-linecap: round;
-            stroke-linejoin: round;
+
+        .category-title {
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            color: var(--primary);
+            border-left: 4px solid var(--primary-light);
+            padding-left: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #1b4332;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: transparent;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .timer-display {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
         }
     </style>
 </head>
-<body class="bg-warmbg text-slate-800 min-h-screen font-sans flex flex-col justify-between antialiased selection:bg-sage-200 selection:text-sage-900">
+<body>
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 glass-card shadow-sm border-b border-sage-100">
-        <div class="max-w-6xl mx-auto px-4 py-3.5 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-sage-500 flex items-center justify-center text-white shadow-md">
-                    <i class="fa-solid fa-spa text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-sage-900 leading-tight">நலம் யோகா (Nalam Yoga)</h1>
-                    <p class="text-xs text-sage-600 font-medium">Yoga & Daily Wellness Assistant</p>
-                </div>
-            </div>
-            
-            <div class="flex items-center space-x-2 sm:space-x-4">
-                <!-- Daily Tracker Mini Summary -->
-                <div class="hidden sm:flex items-center bg-sage-50 px-3 py-1.5 rounded-full border border-sage-200 text-xs font-semibold text-sage-800">
-                    <i class="fa-solid fa-circle-check text-sage-500 mr-2"></i>
-                    <span id="headerProgressText">இன்றைய பயிற்சி: 0/7</span>
-                </div>
-                <!-- Quick Link to Breathing App -->
-                <button onclick="switchTab('breathing')" class="bg-sage-600 hover:bg-sage-700 text-white text-xs sm:text-sm px-3.5 py-2 rounded-full font-medium transition flex items-center shadow-sm">
-                    <i class="fa-solid fa-wind mr-1.5"></i>
-                    <span>மூச்சுப் பயிற்சி</span>
-                </button>
-            </div>
-        </div>
+    <header>
+        <h1>🧘 நலம் யோகா</h1>
+        <p>ஆரோக்கியமான வாழ்க்கை மற்றும் ஆழ்ந்த தூக்கத்திற்கான வழிகாட்டி</p>
     </header>
 
-    <!-- Hero / Health Status Summary Banner -->
-    <section class="max-w-6xl mx-auto px-4 mt-6 w-full">
-        <div class="bg-gradient-to-br from-sage-700 via-sage-600 to-sage-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-            <!-- Background Decorative circles -->
-            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute right-40 -top-10 w-32 h-32 bg-sage-300/20 rounded-full blur-xl pointer-events-none"></div>
-            
-            <div class="relative z-10 max-w-3xl">
-                <div class="inline-flex items-center bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-sage-100 mb-3 border border-white/20">
-                    <i class="fa-solid fa-notes-medical mr-2 text-yellow-300"></i> உங்கள் உடல்நலத் தேவைகளுக்காகத் தயாரிக்கப்பட்டது
-                </div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
-                    கல்லீரல், கொலஸ்ட்ரால் & ஆழ்ந்த தூக்கத்திற்கான பயிற்சிகள்
-                </h2>
-                <p class="text-sage-100 text-sm sm:text-base leading-relaxed mb-6">
-                    Grade 1 Fatty Liver, கொலஸ்ட்ரால் கட்டுப்பாடு, சென்னை பருவநிலை சளி தடுப்பு மற்றும் இரவில் அமைதியான ஆழ்ந்த தூக்கம் பெறக்கூடிய சிறப்பு ஆசனங்கள்.
-                </p>
-
-                <!-- Daily Progress Tracker Bar -->
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15">
-                    <div class="flex justify-between items-center mb-2 text-xs sm:text-sm">
-                        <span class="font-medium text-sage-100"><i class="fa-solid fa-calendar-check mr-2"></i>இன்றைய பயிற்சி இலக்கு (Daily Progress)</span>
-                        <span id="progressPercentage" class="font-bold text-white">0%</span>
-                    </div>
-                    <div class="w-full bg-sage-900/40 rounded-full h-3 overflow-hidden p-0.5">
-                        <div id="progressBar" class="bg-gradient-to-r from-yellow-300 to-green-400 h-2 rounded-full transition-all duration-500 w-0"></div>
-                    </div>
-                    <div class="mt-3 flex flex-wrap gap-2 text-xs text-sage-200">
-                        <span class="inline-flex items-center"><i class="fa-solid fa-check text-green-300 mr-1"></i> காலை 4 பயிற்சிகள்</span>
-                        <span class="mx-1">•</span>
-                        <span class="inline-flex items-center"><i class="fa-solid fa-check text-blue-300 mr-1"></i> இரவு 3 பயிற்சிகள்</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content Tabs & Navigation -->
-    <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
+    <div class="container">
         
-        <!-- Tab Selector Controls -->
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-8 border-b border-sage-200 pb-4">
-            <div class="flex flex-wrap gap-2">
-                <button onclick="filterCategory('all')" id="btn-all" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center bg-sage-600 text-white shadow-sm">
-                    <i class="fa-solid fa-cubes mr-2"></i> அனைத்தும் (All)
-                </button>
-                <button onclick="filterCategory('night')" id="btn-night" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-sage-700 hover:bg-sage-100 transition flex items-center">
-                    <i class="fa-solid fa-moon mr-2 text-indigo-500"></i> இரவு தூக்கம் (Night & Sleep)
-                </button>
-                <button onclick="filterCategory('morning')" id="btn-morning" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-sage-700 hover:bg-sage-100 transition flex items-center">
-                    <i class="fa-solid fa-sun mr-2 text-amber-500"></i> காலை / கல்லீரல் & கொலஸ்ட்ரால்
-                </button>
-                <button onclick="filterCategory('cold')" id="btn-cold" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-sage-700 hover:bg-sage-100 transition flex items-center">
-                    <i class="fa-solid fa-wind mr-2 text-teal-500"></i> சளி & மூச்சுப் பயிற்சி
-                </button>
-            </div>
-
-            <!-- View Switcher (All Poses vs Breathing Tool vs Daily Tracker) -->
-            <div class="flex items-center bg-sage-100 p-1 rounded-xl">
-                <button onclick="switchTab('poses')" id="mode-poses" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-sage-900 shadow-sm transition">
-                    <i class="fa-solid fa-list mr-1"></i> யோகா ஆசனங்கள்
-                </button>
-                <button onclick="switchTab('breathing')" id="mode-breathing" class="px-3 py-1.5 rounded-lg text-xs font-bold text-sage-700 hover:text-sage-900 transition">
-                    <i class="fa-solid fa-circle-dot mr-1"></i> மூச்சு வழிகாட்டி
-                </button>
-            </div>
-        </div>
-
-        <!-- POSES VIEW CONTAINER -->
-        <div id="view-poses" class="space-y-6">
-            <!-- Category Alert Banner -->
-            <div id="categoryBanner" class="hidden bg-sage-50 border border-sage-200 rounded-2xl p-4 flex items-center justify-between text-sm text-sage-800">
-                <div class="flex items-center space-x-3">
-                    <i id="bannerIcon" class="fa-solid fa-info-circle text-sage-600 text-lg"></i>
-                    <span id="bannerText">காண்பிக்கப்படும் பயிற்சிகள்: அனைத்தும்</span>
-                </div>
-                <button onclick="filterCategory('all')" class="text-xs font-bold text-sage-600 underline hover:text-sage-800">அனைத்தையும் காட்டு</button>
-            </div>
-
-            <!-- Exercise Cards Grid -->
-            <div id="exerciseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Cards will be dynamically populated by JS -->
-            </div>
-        </div>
-
-        <!-- BREATHING TOOL VIEW CONTAINER (Guided Anulom Vilom Assistant) -->
-        <div id="view-breathing" class="hidden">
-            <div class="max-w-2xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-lg border border-sage-200 text-center relative overflow-hidden">
-                <div class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                    <i class="fa-solid fa-leaf mr-1"></i> அநுலோம் விலோம் மாற்று மூச்சுப் பயிற்சி
-                </div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-sage-900 mb-2">அனுலோம் விலோம் மூச்சு வழிகாட்டி</h2>
-                <p class="text-xs sm:text-sm text-warmgray mb-8 max-w-md mx-auto">
-                    சளி, மூக்கடைப்பு நீங்கி, நரம்பு மண்டலம் அமைதியடைந்து ஆழ்ந்த தூக்கம் வர இந்த திரையில் தோன்றும் வழிகாட்டலைப் பின்பற்றி மூச்சு விடுங்கள்.
-                </p>
-
-                <!-- Interactive Breathing Animation Sphere -->
-                <div class="relative w-64 h-64 sm:w-72 sm:h-72 mx-auto mb-8 flex items-center justify-center">
-                    <!-- Outer pulsating ring -->
-                    <div id="breathRing" class="absolute inset-0 rounded-full bg-teal-200/50 transition-all duration-1000 scale-90"></div>
-                    <!-- Middle ring -->
-                    <div class="absolute inset-4 rounded-full bg-sage-300/40 backdrop-blur-sm"></div>
-                    <!-- Core Inner Breathing Sphere -->
-                    <div id="breathSphere" class="w-40 h-40 rounded-full bg-gradient-to-tr from-sage-600 to-teal-500 shadow-xl flex flex-col items-center justify-center text-white p-4 transition-all duration-1000 transform scale-100">
-                        <i id="breathIcon" class="fa-solid fa-wind text-2xl mb-1"></i>
-                        <span id="breathAction" class="font-bold text-lg leading-tight">தயார்</span>
-                        <span id="breathTimerNum" class="text-xs text-sage-100 mt-1 font-mono">--</span>
+        <!-- Section 1 -->
+        <h2 class="category-title">🌙 இரவுக் காலம் & தூக்கம் (Night Routine)</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 18h16M7 14l5-4 5 4"/></svg>
+                        </div>
+                        <div>
+                            <div class="card-title">சவாசனம் (Shavasana)</div>
+                            <div class="card-subtitle">Corpse Pose</div>
+                        </div>
                     </div>
+                    <p class="card-desc">உடலையும் மனதையும் தளர்த்தி, ஆழ்ந்த தூக்கத்தைக் கொண்டுவர உதவும் எளிய பயிற்சி.</p>
                 </div>
-
-                <!-- Text Instruction Banner -->
-                <div class="bg-sage-50 rounded-2xl p-4 border border-sage-200 mb-6">
-                    <p id="breathStepText" class="text-base sm:text-lg font-bold text-sage-900">
-                        "தொடங்க கிளிக் செய்யவும் (Click Start)"
-                    </p>
-                    <p id="breathSubInstruction" class="text-xs text-sage-600 mt-1">
-                        நிமிர்ந்து அமர்ந்து, வலது கை பெருவிரலால் வலது மூக்கை மூடத் தயாராகுங்கள்.
-                    </p>
+                <div class="card-footer">
+                    <button class="btn-primary" onclick="openTimer('சவாசனம்', 300)">டைமர் தொடங்கு (5 நிமி)</button>
                 </div>
+            </div>
 
-                <!-- Breathing Assistant Controls -->
-                <div class="flex items-center justify-center space-x-4">
-                    <button id="startBreathBtn" onclick="toggleBreathingGuide()" class="bg-sage-600 hover:bg-sage-700 text-white font-bold px-8 py-3 rounded-xl transition shadow-md flex items-center">
-                        <i class="fa-solid fa-play mr-2"></i> <span>பயிற்சியைத் தொடங்கு</span>
-                    </button>
-                    <button onclick="resetBreathingGuide()" class="bg-stone-200 hover:bg-stone-300 text-stone-700 font-semibold px-4 py-3 rounded-xl transition">
-                        <i class="fa-solid fa-rotate-left"></i>
-                    </button>
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8"/></svg>
+                        </div>
+                        <div>
+                            <div class="card-title">அனுலோம் விலோம்</div>
+                            <div class="card-subtitle">Anulom Vilom</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">சளியினால் ஏற்படும் மூக்கடைப்பைச் சரிசெய்து, சுவாசத்தைச் சீராக்கும் மாற்று மூச்சுப் பயிற்சி.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-primary" onclick="openTimer('அனுலோம் விலோம்', 300)">டைமர் தொடங்கு (5 நிமி)</button>
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- Interactive Timer Modal -->
-    <div id="timerModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-sage-100 animate-in fade-in zoom-in duration-200">
-            <!-- Close Modal -->
-            <button onclick="closeTimerModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <div class="text-center">
-                <div class="w-12 h-12 bg-sage-100 text-sage-700 rounded-2xl mx-auto flex items-center justify-center mb-3">
-                    <i class="fa-solid fa-stopwatch text-xl"></i>
-                </div>
-                <h3 id="modalPoseTitle" class="text-xl font-bold text-sage-900">ஆசனப் பெயர்</h3>
-                <p id="modalPoseCategory" class="text-xs text-sage-600 font-medium mb-6">பயிற்சி நேரம் (Practice Timer)</p>
-
-                <!-- Clock Display -->
-                <div class="bg-sage-50 rounded-3xl p-6 border border-sage-200 mb-6">
-                    <div id="timerDisplay" class="text-5xl sm:text-6xl font-extrabold text-sage-900 font-mono tracking-wider">
-                        05:00
+        <!-- Section 2 -->
+        <h2 class="category-title">☀️ காலை வேளை - Fatty Liver & Cholesterol</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 12c4-4 12-4 16 0M4 12c4 4 12 4 16 0"/></svg>
+                        </div>
+                        <div>
+                            <div class="card-title">தனுராசனம் (Dhanurasana)</div>
+                            <div class="card-subtitle">Bow Pose</div>
+                        </div>
                     </div>
-                    <p id="timerStatus" class="text-xs text-sage-600 mt-2 font-medium">பயிற்சியைத் தொடங்கத் தயார்</p>
+                    <p class="card-desc">வயிற்றுப் பகுதிக்கு அழுத்தம் கொடுத்து, கல்லீரல் கொழுப்பைக் குறைக்க உதவும்.</p>
                 </div>
-
-                <!-- Timer Controls -->
-                <div class="flex justify-center items-center space-x-3 mb-6">
-                    <button onclick="adjustTimer(-60)" class="w-10 h-10 bg-sage-100 hover:bg-sage-200 text-sage-800 font-bold rounded-xl text-sm">-1m</button>
-                    <button id="modalPlayBtn" onclick="toggleTimer()" class="bg-sage-600 hover:bg-sage-700 text-white font-bold px-8 py-3 rounded-xl transition shadow-md text-base flex items-center">
-                        <i id="playIcon" class="fa-solid fa-play mr-2"></i> <span id="playText">தொடங்கு</span>
-                    </button>
-                    <button onclick="resetTimer()" class="w-10 h-10 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm"><i class="fa-solid fa-arrow-rotate-right"></i></button>
-                    <button onclick="adjustTimer(60)" class="w-10 h-10 bg-sage-100 hover:bg-sage-200 text-sage-800 font-bold rounded-xl text-sm">+1m</button>
+                <div class="card-footer">
+                    <button class="btn-primary" onclick="openTimer('தனுராசனம்', 180)">டைமர் தொடங்கு (3 நிமி)</button>
                 </div>
+            </div>
 
-                <!-- Complete Checkbox inside Timer -->
-                <button id="modalMarkCompleteBtn" onclick="toggleCompleteFromModal()" class="w-full py-3 rounded-xl border border-sage-300 text-sage-800 font-bold text-xs sm:text-sm hover:bg-sage-50 transition flex items-center justify-center">
-                    <i class="fa-regular fa-square-check mr-2 text-base text-sage-600"></i>
-                    <span>இன்றைய பயிற்சியை முடித்துவிட்டேன் (Mark Done)</span>
-                </button>
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 20c5-5 13-5 18 0M12 4v8"/></svg>
+                        </div>
+                        <div>
+                            <div class="card-title">புஜங்காசனம் (Bhujangasana)</div>
+                            <div class="card-subtitle">Cobra Pose</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">செரிமான உறுப்புகளைச் சீராக்கி, கெட்ட கொலஸ்ட்ராலைக் குறைக்க உதவும்.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-primary" onclick="openTimer('புஜங்காசனம்', 180)">டைமர் தொடங்கு (3 நிமி)</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Timer Modal Container -->
+    <div class="modal-overlay" id="timerModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeTimer()">✕</button>
+            <h3 id="poseName" style="color: var(--primary);">பயிற்சி</h3>
+            <div class="timer-display" id="timeDisplay">05:00</div>
+            <div class="controls">
+                <button class="btn-primary" id="startBtn" onclick="toggleTimer()">தொடங்கு</button>
+                <button class="btn-outline" onclick="resetTimer()">மீட்டமை (Reset)</button>
             </div>
         </div>
     </div>
 
-    <!-- Quick Health Tips / Safety Advice Banner -->
-    <section class="max-w-6xl mx-auto px-4 mb-10 w-full">
-        <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-5 text-amber-900 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div class="flex items-start space-x-3">
-                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl mt-0.5"></i>
-                <div>
-                    <h4 class="font-bold text-amber-950">முக்கிய ஆரோக்கியக் குறிப்புகள் (Safety Guidelines):</h4>
-                    <ul class="list-disc list-inside mt-1 space-y-0.5 text-amber-800 text-xs">
-                        <li>சளி பிரச்சனை இருக்கும் நாட்களில் அதிகக் குளிர்ச்சி தரும் வெந்தயக் களி / கீழாநெல்லியைத் தவிர்க்கவும்.</li>
-                        <li>கொலஸ்ட்ரால் மாத்திரையை மருத்துவர் கூறியபடி இரவு உணவுக்குப் பின் தவறாமல் எடுக்கவும்.</li>
-                        <li>யோகா பயிற்சிகளைத் தவறாமல் வெறும் வயிற்றில் அல்லது உணவு உண்டு 3 மணிநேரம் கழித்துச் செய்யவும்.</li>
-                    </ul>
-                </div>
-            </div>
-            <a href="javascript:void(0)" onclick="filterCategory('night')" class="whitespace-nowrap bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition self-end sm:self-center">
-                இரவுப் பயிற்சிகள் பார்க்க <i class="fa-solid fa-arrow-right ml-1"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-sage-900 text-sage-200 py-8 border-t border-sage-800">
-        <div class="max-w-6xl mx-auto px-4 text-center sm:flex sm:justify-between sm:items-center text-xs">
-            <div class="mb-4 sm:mb-0">
-                <p class="font-bold text-white text-sm">யோகா & நல்வாழ்வு வழிகாட்டி (Yoga & Wellness App)</p>
-                <p class="text-sage-400 mt-1">கல்லீரல் ஆரோக்கியம், கொலஸ்ட்ரால் கட்டுப்பாடு & சீரான தூக்கத்திற்கான எளிய வழிகாட்டி.</p>
-            </div>
-            <div class="text-sage-400">
-                <p>© 2026 சென்னை உடல்நலப் பராமரிப்பு வழிகாட்டல்.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Audio Beep / Sound Effect via Web Audio API -->
+    <!-- JavaScript Functionality -->
     <script>
-        // --- SVG ILLUSTRATIONS STORE FOR YOGA POSES ---
-        const poseSVGs = {
-            shavasana: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#F0F4F1" />
-                    <!-- Mat -->
-                    <rect x="25" y="82" width="150" height="6" rx="3" fill="#A3BE9F" opacity="0.6" />
-                    <!-- Body: Flat on back -->
-                    <circle cx="45" cy="65" r="9" fill="#5F8759" /> <!-- Head -->
-                    <path d="M54 68 L135 68" stroke="#5F8759" stroke-width="7" fill="none" /> <!-- Torso & Legs -->
-                    <path d="M60 70 L95 76" stroke="#496B44" stroke-width="4" fill="none" /> <!-- Left Arm -->
-                    <path d="M60 70 L90 78" stroke="#7FA37A" stroke-width="3" fill="none" /> <!-- Right Arm -->
-                    <path d="M135 68 L160 72" stroke="#5F8759" stroke-width="5" fill="none" /> <!-- Feet -->
-                    <circle cx="45" cy="53" r="1.5" fill="#5F8759" opacity="0.4" /> <!-- Zzz indicator -->
-                    <text x="145" y="45" font-size="10" font-weight="bold" fill="#496B44">மல்லாந்த நிலை</text>
-                </svg>
-            `,
-            anulom_vilom: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#E8F4F2" />
-                    <!-- Cross-legged torso -->
-                    <path d="M70 100 Q100 95 130 100" stroke="#5F8759" stroke-width="8" fill="none" /> <!-- Folded Legs -->
-                    <path d="M100 95 L100 55" stroke="#496B44" stroke-width="7" fill="none" /> <!-- Spine -->
-                    <circle cx="100" cy="40" r="11" fill="#5F8759" /> <!-- Head -->
-                    <!-- Hand to Nose (Vishnu Mudra) -->
-                    <path d="M100 65 Q115 58 106 44" stroke="#3A5436" stroke-width="4" fill="none" />
-                    <!-- Air Flow Arrows -->
-                    <path d="M82 35 Q90 25 96 36" stroke="#0D9488" stroke-width="2.5" fill="none" stroke-dasharray="3,2" />
-                    <circle cx="82" cy="35" r="2" fill="#0D9488" />
-                    <text x="14" y="25" font-size="10" font-weight="bold" fill="#0D9488">மூச்சுப் பயிற்சி</text>
-                </svg>
-            `,
-            supta_baddha: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#EEF2FF" />
-                    <!-- Reclined Butterfly -->
-                    <circle cx="40" cy="65" r="9" fill="#4F46E5" /> <!-- Head -->
-                    <path d="M49 68 L105 68" stroke="#4F46E5" stroke-width="7" fill="none" /> <!-- Spine -->
-                    <!-- Diamond legs -->
-                    <path d="M105 68 L125 55 L145 68 L125 81 Z" stroke="#4F46E5" stroke-width="5" fill="#E0E7FF" /> 
-                    <!-- Arms at side -->
-                    <path d="M55 70 Q75 80 90 73" stroke="#6366F1" stroke-width="4" fill="none" />
-                    <text x="125" y="30" font-size="10" font-weight="bold" fill="#4F46E5">பட்டாம்பூச்சி நிலை</text>
-                </svg>
-            `,
-            dhanurasana: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#FEF3C7" />
-                    <!-- Bow Arc Torso -->
-                    <path d="M50 45 Q100 95 150 45" stroke="#D97706" stroke-width="7" fill="none" /> <!-- Curve of abdomen/back -->
-                    <circle cx="46" cy="40" r="9" fill="#B45309" /> <!-- Head -->
-                    <!-- Arms holding ankles -->
-                    <path d="M54 46 Q100 35 146 46" stroke="#92400E" stroke-width="3.5" fill="none" /> 
-                    <!-- Feet & Hands meeting point -->
-                    <circle cx="146" cy="46" r="4" fill="#D97706" />
-                    <!-- Liver focus highlight -->
-                    <circle cx="100" cy="80" r="10" fill="#F59E0B" opacity="0.3" />
-                    <text x="12" y="25" font-size="10" font-weight="bold" fill="#B45309">வில் ஆசனம் (Bow)</text>
-                </svg>
-            `,
-            bhujangasana: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#FFEDD5" />
-                    <!-- Cobra Pose -->
-                    <!-- Legs on floor -->
-                    <path d="M95 85 L165 85" stroke="#EA580C" stroke-width="6" fill="none" />
-                    <!-- Chest raised upwards -->
-                    <path d="M95 85 Q75 80 60 45" stroke="#EA580C" stroke-width="7" fill="none" />
-                    <circle cx="56" cy="36" r="9" fill="#C2410C" /> <!-- Head looking up -->
-                    <!-- Arms supporting on ground -->
-                    <path d="M70 65 L70 85 L80 85" stroke="#9A3412" stroke-width="4" fill="none" />
-                    <text x="12" y="25" font-size="10" font-weight="bold" fill="#C2410C">பாம்பு ஆசனம் (Cobra)</text>
-                </svg>
-            `,
-            paschimottanasana: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#ECFDF5" />
-                    <!-- Forward Bend -->
-                    <path d="M60 85 L155 85" stroke="#059669" stroke-width="6" fill="none" /> <!-- Legs flat -->
-                    <path d="M60 85 C60 50 110 55 145 78" stroke="#047857" stroke-width="6" fill="none" /> <!-- Back bent forward -->
-                    <circle cx="145" cy="74" r="8" fill="#065F46" /> <!-- Head near knees -->
-                    <!-- Arms reaching feet -->
-                    <path d="M80 72 L150 83" stroke="#10B981" stroke-width="3.5" fill="none" />
-                    <text x="12" y="25" font-size="10" font-weight="bold" fill="#047857">முன்னோக்கி வளையும் நிலை</text>
-                </svg>
-            `,
-            kapalabhati: `
-                <svg viewBox="0 0 200 120" class="w-full h-36 mx-auto pose-svg">
-                    <rect width="200" height="120" rx="16" fill="#FFFBEB" />
-                    <!-- Seated Padmasana -->
-                    <path d="M65 95 Q100 90 135 95" stroke="#D97706" stroke-width="8" fill="none" /> <!-- Legs -->
-                    <path d="M100 90 L100 48" stroke="#B45309" stroke-width="7" fill="none" /> <!-- Spine -->
-                    <circle cx="100" cy="35" r="10" fill="#92400E" /> <!-- Head -->
-                    <!-- Hands on knees -->
-                    <path d="M90 60 L68 82" stroke="#D97706" stroke-width="3.5" fill="none" />
-                    <path d="M110 60 L132 82" stroke="#D97706" stroke-width="3.5" fill="none" />
-                    <!-- Abdominal Pumping Wave graphic -->
-                    <circle cx="100" cy="70" r="12" stroke="#F59E0B" stroke-width="2" fill="#FEF3C7" opacity="0.8" />
-                    <path d="M94 70 L106 70" stroke="#D97706" stroke-width="2.5" fill="none" />
-                    <text x="12" y="25" font-size="10" font-weight="bold" fill="#92400E">சுவாச சுத்திகரிப்பு</text>
-                </svg>
-            `
-        };
+        let timerInterval = null;
+        let totalSeconds = 0;
+        let initialSeconds = 0;
+        let isRunning = false;
 
-        // --- RENDER EXERCISE CARDS WITH SVG DIAGRAMS ---
-        function renderCards() {
-            const grid = document.getElementById('exerciseGrid');
-            grid.innerHTML = '';
-
-            const filtered = yogaData.filter(item => {
-                if (currentFilter === 'all') return true;
-                if (currentFilter === 'night') return item.category === 'night';
-                if (currentFilter === 'morning') return item.category === 'morning';
-                if (currentFilter === 'cold') return item.category === 'cold' || item.id === 'anulom_vilom';
-                return true;
-            });
-
-            filtered.forEach(pose => {
-                const isCompleted = completedPoses.includes(pose.id);
-                const svgGraphic = poseSVGs[pose.id] || '';
-
-                const card = document.createElement('div');
-                card.className = `glass-card rounded-3xl p-5 shadow-sm border border-sage-200 hover:shadow-md transition flex flex-col justify-between relative overflow-hidden bg-gradient-to-b ${pose.bgGradient}`;
-
-                let benefitsHTML = pose.benefits.map(b => `<span class="bg-white/80 text-sage-800 px-2 py-0.5 rounded-md text-[10px] font-bold border border-sage-200">${b}</span>`).join(' ');
-
-                let stepsListHTML = pose.stepsTa.map((step, idx) => `
-                    <li class="flex items-start text-xs text-stone-700 leading-relaxed mb-1.5">
-                        <span class="w-4 h-4 rounded-full bg-sage-200 text-sage-800 text-[10px] font-bold flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">${idx+1}</span>
-                        <span>${step}</span>
-                    </li>
-                `).join('');
-
-                card.innerHTML = `
-                    <div>
-                        <!-- Header / Tags -->
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="${pose.badgeColor} text-[11px] font-extrabold px-2.5 py-1 rounded-full flex items-center">
-                                <i class="fa-regular fa-clock mr-1"></i> ${pose.timingTag}
-                            </span>
-                            <button onclick="toggleComplete('${pose.id}')" class="text-xl transition focus:outline-none">
-                                ${isCompleted 
-                                    ? '<i class="fa-solid fa-circle-check text-green-600"></i>' 
-                                    : '<i class="fa-regular fa-circle text-stone-300 hover:text-stone-400"></i>'}
-                            </button>
-                        </div>
-
-                        <!-- Titles -->
-                        <h3 class="text-lg font-bold text-sage-900 leading-tight mb-0.5">${pose.titleTa}</h3>
-                        <p class="text-xs font-semibold text-sage-600 mb-3">${pose.titleEn}</p>
-
-                        <!-- Illustrative Vector SVG Pose Diagram -->
-                        <div class="mb-4 rounded-2xl overflow-hidden shadow-inner border border-white/60">
-                            ${svgGraphic}
-                        </div>
-
-                        <!-- Health Benefit Pills -->
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            ${benefitsHTML}
-                        </div>
-
-                        <!-- Step Instructions -->
-                        <div class="bg-white/70 rounded-2xl p-3 border border-sage-100 mb-4">
-                            <p class="text-[11px] font-bold text-sage-800 mb-2 uppercase tracking-wider"><i class="fa-solid fa-list-check mr-1"></i> செய்முறை (Steps):</p>
-                            <ul>
-                                ${stepsListHTML}
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Action Button: Open Interactive Timer -->
-                    <div class="pt-2 border-t border-sage-200/60 flex items-center justify-between">
-                        <span class="text-xs text-stone-500 font-medium">பரிந்துரை: ${pose.defaultTimeMinutes} நிமிடங்கள்</span>
-                        <button onclick="openTimerModal('${pose.id}')" class="bg-sage-600 hover:bg-sage-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm flex items-center">
-                            <i class="fa-solid fa-stopwatch mr-1.5"></i> டைமர் (Timer)
-                        </button>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-
-            updateProgress();
+        function openTimer(name, seconds) {
+            document.getElementById('poseName').innerText = name;
+            totalSeconds = seconds;
+            initialSeconds = seconds;
+            updateDisplay();
+            document.getElementById('timerModal').classList.add('active');
         }
-<!-- ... existing code -->
+
+        function closeTimer() {
+            pauseTimer();
+            document.getElementById('timerModal').classList.remove('active');
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            if (totalSeconds <= 0) return;
+            isRunning = true;
+            document.getElementById('startBtn').innerText = 'நிறுத்து (Pause)';
+            timerInterval = setInterval(() => {
+                totalSeconds--;
+                updateDisplay();
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    document.getElementById('startBtn').innerText = 'முடிந்தது!';
+                    alert('பயிற்சி முடிந்தது! நன்று.');
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById('startBtn').innerText = 'தொடங்கு';
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            totalSeconds = initialSeconds;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            document.getElementById('timeDisplay').innerText = 
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
