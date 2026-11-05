@@ -7,14 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2d6a4f;
-            --primary-light: #52b788;
-            --bg: #f8f9fa;
+            --primary: #2b593f;
+            --primary-light: #428560;
+            --accent: #88c999;
+            --bg: #f4f7f5;
             --surface: #ffffff;
-            --text: #1d2d44;
-            --text-light: #6c757d;
-            --accent: #d8f3dc;
-            --border: #e9ecef;
+            --text: #1f2d26;
+            --text-light: #5f7367;
+            --border: #e0e8e3;
+            --skin: #f7d5b8;
+            --clothes: #3b7a57;
         }
 
         * {
@@ -27,31 +29,55 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         header {
-            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            background: linear-gradient(135deg, #1e3d2c, #346349);
             color: white;
-            padding: 30px 20px;
-            text-align: center;
+            padding: 25px 20px;
+            position: relative;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 1.8rem;
+            margin-bottom: 4px;
         }
 
         header p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             opacity: 0.9;
         }
 
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -60,13 +86,13 @@
             font-size: 1.3rem;
             margin: 25px 0 15px;
             color: var(--primary);
-            border-left: 4px solid var(--primary-light);
+            border-left: 4px solid var(--accent);
             padding-left: 10px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
 
@@ -75,53 +101,64 @@
             border-radius: 16px;
             padding: 20px;
             border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
             margin-bottom: 12px;
         }
 
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+        .pose-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .card-icon svg {
-            width: 30px;
-            height: 30px;
-            stroke: var(--primary);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .card-subtitle {
+        .pose-sub {
             font-size: 0.85rem;
             color: var(--text-light);
         }
 
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.5;
+        /* SVG Image Frame */
+        .svg-container {
+            width: 100%;
+            height: 170px;
+            background-color: #eef5f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0;
+            border: 1px solid #dce8df;
+        }
+
+        .svg-container svg {
+            width: 150px;
+            height: 130px;
+        }
+
+        .steps-box {
+            background: #f8faf9;
+            border-radius: 10px;
+            padding: 12px;
             margin-bottom: 15px;
+            border: 1px solid #ebf2ed;
+        }
+
+        .steps-box h4 {
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            margin-bottom: 6px;
+        }
+
+        .steps-list {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.5;
+            padding-left: 18px;
         }
 
         .card-footer {
@@ -129,30 +166,21 @@
             gap: 10px;
         }
 
-        button {
+        button.btn-primary {
             border: none;
             cursor: pointer;
             border-radius: 10px;
             font-weight: 600;
-            padding: 10px 16px;
+            padding: 12px 16px;
             font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
             background: var(--primary);
             color: white;
             flex: 1;
+            transition: background 0.2s;
         }
 
-        .btn-primary:hover {
-            background: #1b4332;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
+        button.btn-primary:hover {
+            background: var(--primary-light);
         }
 
         /* Modal Styles */
@@ -174,7 +202,7 @@
         .modal {
             background: white;
             border-radius: 20px;
-            max-width: 450px;
+            max-width: 400px;
             width: 100%;
             padding: 25px;
             text-align: center;
@@ -185,117 +213,205 @@
             position: absolute;
             top: 15px; right: 15px;
             background: transparent;
-            font-size: 1.5rem;
+            border: none;
+            font-size: 1.4rem;
             color: var(--text-light);
+            cursor: pointer;
         }
 
         .timer-display {
             font-size: 3.5rem;
             font-weight: 700;
             color: var(--primary);
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .controls {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🧘 நலம் யோகா</h1>
-        <p>ஆரோக்கியமான வாழ்க்கை மற்றும் ஆழ்ந்த தூக்கத்திற்கான வழிகாட்டி</p>
+        <div class="header-content">
+            <div>
+                <h1 id="appTitle">🧘 நலம் யோகா</h1>
+                <p id="appSub">ஆரோக்கியமான வாழ்க்கை மற்றும் ஆழ்ந்த தூக்கத்திற்கான யோகா வழிகாட்டி</p>
+            </div>
+            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">English</button>
+        </div>
     </header>
 
     <div class="container">
         
-        <!-- Section 1 -->
-        <h2 class="category-title">🌙 இரவுக் காலம் & தூக்கம் (Night Routine)</h2>
+        <!-- NIGHT ROUTINE -->
+        <h2 class="category-title" id="secNight">🌙 இரவுக் காலம் & நல்ல தூக்கம் (Night Routine)</h2>
         <div class="grid">
+            
+            <!-- Shavasana -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M4 18h16M7 14l5-4 5 4"/></svg>
-                        </div>
-                        <div>
-                            <div class="card-title">சவாசனம் (Shavasana)</div>
-                            <div class="card-subtitle">Corpse Pose</div>
-                        </div>
+                        <div class="pose-title" id="p1Title">1. சவாசனம் (Shavasana)</div>
+                        <div class="pose-sub">Corpse Pose</div>
                     </div>
-                    <p class="card-desc">உடலையும் மனதையும் தளர்த்தி, ஆழ்ந்த தூக்கத்தைக் கொண்டுவர உதவும் எளிய பயிற்சி.</p>
+                    
+                    <div class="svg-container">
+                        <svg viewBox="0 0 120 80">
+                            <!-- Mat -->
+                            <rect x="10" y="55" width="100" height="6" rx="3" fill="#a8d5ba"/>
+                            <!-- Body -->
+                            <ellipse cx="25" cy="50" rx="7" ry="6" fill="#f7d5b8"/> <!-- Head -->
+                            <rect x="32" y="46" width="35" height="10" rx="4" fill="#3b7a57"/> <!-- Torso -->
+                            <rect x="67" y="47" width="30" height="7" rx="3" fill="#2d5e43"/> <!-- Legs -->
+                            <!-- Arms -->
+                            <rect x="35" y="55" width="25" height="4" rx="2" fill="#f7d5b8"/>
+                        </svg>
+                    </div>
+
+                    <div class="steps-box">
+                        <h4 class="steps-head">எப்படிச் செய்ய வேண்டும்?</h4>
+                        <ol class="steps-list" id="p1Steps">
+                            <li>படுக்கையில் மல்லாக்காகப் படுத்துக் கொள்ளுங்கள்.</li>
+                            <li>கைகளையும் கால்களையும் தளர்த்தியாக வையுங்கள்.</li>
+                            <li>கண்களை மூடி, கவனத்தை மூச்சின் மீது மட்டும் வையுங்கள்.</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="openTimer('சவாசனம்', 300)">டைமர் தொடங்கு (5 நிமி)</button>
+                    <button class="btn-primary" onclick="openTimer('Shavasana / சவாசனம்', 300)" id="p1Btn">டைமர் தொடங்கு (5 நிமி)</button>
                 </div>
             </div>
 
+            <!-- Anulom Vilom -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8"/></svg>
-                        </div>
-                        <div>
-                            <div class="card-title">அனுலோம் விலோம்</div>
-                            <div class="card-subtitle">Anulom Vilom</div>
-                        </div>
+                        <div class="pose-title" id="p2Title">2. அனுலோம் விலோம்</div>
+                        <div class="pose-sub">Alternate Nostril Breathing</div>
                     </div>
-                    <p class="card-desc">சளியினால் ஏற்படும் மூக்கடைப்பைச் சரிசெய்து, சுவாசத்தைச் சீராக்கும் மாற்று மூச்சுப் பயிற்சி.</p>
+
+                    <div class="svg-container">
+                        <svg viewBox="0 0 120 90">
+                            <!-- Seated legs -->
+                            <path d="M30 75 Q60 85 90 75 Q60 65 30 75" fill="#2d5e43"/>
+                            <!-- Torso -->
+                            <path d="M48 45 L52 45 L55 70 L45 70 Z" fill="#3b7a57"/>
+                            <!-- Head -->
+                            <circle cx="50" cy="32" r="10" fill="#f7d5b8"/>
+                            <!-- Hand up to nose -->
+                            <path d="M52 50 L62 40 L55 35" stroke="#f7d5b8" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <div class="steps-box">
+                        <h4 class="steps-head">எப்படிச் செய்ய வேண்டும்?</h4>
+                        <ol class="steps-list" id="p2Steps">
+                            <li>நிமிர்ந்து அமர்ந்து வலது கட்டைவிரலால் வலது மூக்கை மூடவும்.</li>
+                            <li>இடது மூக்கு வழியாக மூச்சை உள்ளே இழுக்கவும்.</li>
+                            <li>இடது மூக்கை மூடி, வலது மூக்கு வழியாக மூச்சை வெளியே விடவும்.</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="openTimer('அனுலோம் விலோம்', 300)">டைமர் தொடங்கு (5 நிமி)</button>
+                    <button class="btn-primary" onclick="openTimer('Anulom Vilom / அனுலோம் விலோம்', 300)" id="p2Btn">டைமர் தொடங்கு (5 நிமி)</button>
                 </div>
             </div>
+
         </div>
 
-        <!-- Section 2 -->
-        <h2 class="category-title">☀️ காலை வேளை - Fatty Liver & Cholesterol</h2>
+        <!-- MORNING ROUTINE -->
+        <h2 class="category-title" id="secMorning">☀️ காலை வேளை - Fatty Liver & Cholesterol</h2>
         <div class="grid">
+            
+            <!-- Dhanurasana -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M4 12c4-4 12-4 16 0M4 12c4 4 12 4 16 0"/></svg>
-                        </div>
-                        <div>
-                            <div class="card-title">தனுராசனம் (Dhanurasana)</div>
-                            <div class="card-subtitle">Bow Pose</div>
-                        </div>
+                        <div class="pose-title" id="p3Title">3. தனுராசனம் (Dhanurasana)</div>
+                        <div class="pose-sub">Bow Pose</div>
                     </div>
-                    <p class="card-desc">வயிற்றுப் பகுதிக்கு அழுத்தம் கொடுத்து, கல்லீரல் கொழுப்பைக் குறைக்க உதவும்.</p>
+
+                    <div class="svg-container">
+                        <svg viewBox="0 0 120 90">
+                            <!-- Arch Body -->
+                            <path d="M25 45 Q60 80 95 45" fill="none" stroke="#3b7a57" stroke-width="12" stroke-linecap="round"/>
+                            <!-- Head -->
+                            <circle cx="25" cy="38" r="8" fill="#f7d5b8"/>
+                            <!-- Legs/Feet -->
+                            <circle cx="95" cy="38" r="6" fill="#f7d5b8"/>
+                            <!-- Arms holding feet -->
+                            <path d="M30 48 Q60 30 90 42" stroke="#f7d5b8" stroke-width="4" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <div class="steps-box">
+                        <h4 class="steps-head">எப்படிச் செய்ய வேண்டும்?</h4>
+                        <ol class="steps-list" id="p3Steps">
+                            <li>குப்புறப் படுத்து முழங்கால்களை மடித்துக் கொள்ளவும்.</li>
+                            <li>கைகளால் கணுக்கால்களைப் (Ankles) பிடித்துக் கொள்ளவும்.</li>
+                            <li>மூச்சை உள்ளே இழுத்து மார்பையும் தொடையையும் மேலே உயர்த்தவும்.</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="openTimer('தனுராசனம்', 180)">டைமர் தொடங்கு (3 நிமி)</button>
+                    <button class="btn-primary" onclick="openTimer('Dhanurasana / தனுராசனம்', 180)" id="p3Btn">டைமர் தொடங்கு (3 நிமி)</button>
                 </div>
             </div>
 
+            <!-- Bhujangasana -->
             <div class="card">
                 <div>
                     <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M3 20c5-5 13-5 18 0M12 4v8"/></svg>
-                        </div>
-                        <div>
-                            <div class="card-title">புஜங்காசனம் (Bhujangasana)</div>
-                            <div class="card-subtitle">Cobra Pose</div>
-                        </div>
+                        <div class="pose-title" id="p4Title">4. புஜங்காசனம் (Bhujangasana)</div>
+                        <div class="pose-sub">Cobra Pose</div>
                     </div>
-                    <p class="card-desc">செரிமான உறுப்புகளைச் சீராக்கி, கெட்ட கொலஸ்ட்ராலைக் குறைக்க உதவும்.</p>
+
+                    <div class="svg-container">
+                        <svg viewBox="0 0 120 90">
+                            <!-- Lower body/Legs -->
+                            <rect x="20" y="62" width="55" height="8" rx="4" fill="#2d5e43"/>
+                            <!-- Lifted Torso -->
+                            <path d="M65 65 Q85 60 90 35" fill="none" stroke="#3b7a57" stroke-width="12" stroke-linecap="round"/>
+                            <!-- Head -->
+                            <circle cx="92" cy="26" r="8" fill="#f7d5b8"/>
+                            <!-- Arms support -->
+                            <path d="M75 55 L78 68" stroke="#f7d5b8" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <div class="steps-box">
+                        <h4 class="steps-head">எப்படிச் செய்ய வேண்டும்?</h4>
+                        <ol class="steps-list" id="p4Steps">
+                            <li>குப்புறப் படுத்து உள்ளங்கைகளை மார்புக்குப் பக்கத்தில் வைக்கவும்.</li>
+                            <li>மூச்சை உள்ளே இழுத்து இடுப்பு வரை உடலை மேலே உயர்த்தவும்.</li>
+                            <li>தலையைச் சற்று மேலே தூக்கி 15-30 வினாடிகள் இருக்கவும்.</li>
+                        </ol>
+                    </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn-primary" onclick="openTimer('புஜங்காசனம்', 180)">டைமர் தொடங்கு (3 நிமி)</button>
+                    <button class="btn-primary" onclick="openTimer('Bhujangasana / புஜங்காசனம்', 180)" id="p4Btn">டைமர் தொடங்கு (3 நிமி)</button>
                 </div>
             </div>
+
         </div>
 
     </div>
 
-    <!-- Timer Modal Container -->
+    <!-- Timer Modal -->
     <div class="modal-overlay" id="timerModal">
         <div class="modal">
             <button class="close-btn" onclick="closeTimer()">✕</button>
@@ -303,13 +419,135 @@
             <div class="timer-display" id="timeDisplay">05:00</div>
             <div class="controls">
                 <button class="btn-primary" id="startBtn" onclick="toggleTimer()">தொடங்கு</button>
-                <button class="btn-outline" onclick="resetTimer()">மீட்டமை (Reset)</button>
+                <button class="btn-outline" onclick="resetTimer()" id="resetBtn">மீட்டமை</button>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Functionality -->
     <script>
+        let currentLang = 'ta';
+
+        const content = {
+            ta: {
+                appTitle: "🧘 நலம் யோகா",
+                appSub: "ஆரோக்கியமான வாழ்க்கை மற்றும் ஆழ்ந்த தூக்கத்திற்கான யோகா வழிகாட்டி",
+                langBtn: "English",
+                secNight: "🌙 இரவுக் காலம் & நல்ல தூக்கம் (Night Routine)",
+                secMorning: "☀️ காலை வேளை - Fatty Liver & Cholesterol",
+                stepsHead: "எப்படிச் செய்ய வேண்டும்?",
+                p1Title: "1. சவாசனம் (Shavasana)",
+                p1Steps: [
+                    "படுக்கையில் மல்லாக்காகப் படுத்துக் கொள்ளுங்கள்.",
+                    "களையும் கால்களையும் தளர்த்தியாக வையுங்கள்.",
+                    "கண்களை மூடி, கவனத்தை மூச்சின் மீது மட்டும் வையுங்கள்."
+                ],
+                p1Btn: "டைமர் தொடங்கு (5 நிமி)",
+                p2Title: "2. அனுலோம் விலோம்",
+                p2Steps: [
+                    "நிமிர்ந்து அமர்ந்து வலது கட்டைவிரலால் வலது மூக்கை மூடவும்.",
+                    "இடது மூக்கு வழியாக மூச்சை உள்ளே இழுக்கவும்.",
+                    "இடது மூக்கை மூடி, வலது மூக்கு வழியாக மூச்சை வெளியே விடவும்."
+                ],
+                p2Btn: "டைமர் தொடங்கு (5 நிமி)",
+                p3Title: "3. தனுராசனம் (Dhanurasana)",
+                p3Steps: [
+                    "குப்புறப் படுத்து முழங்கால்களை மடித்துக் கொள்ளவும்.",
+                    "கைகளால் கணுக்கால்களைப் (Ankles) பிடித்துக் கொள்ளவும்.",
+                    "மூச்சை உள்ளே இழுத்து மார்பையும் தொடையையும் மேலே உயர்த்தவும்."
+                ],
+                p3Btn: "டைமர் தொடங்கு (3 நிமி)",
+                p4Title: "4. புஜங்காசனம் (Bhujangasana)",
+                p4Steps: [
+                    "குப்புறப் படுத்து உள்ளங்கைகளை மார்புக்குப் பக்கத்தில் வைக்கவும்.",
+                    "மூச்சை உள்ளே இழுத்து இடுப்பு வரை உடலை மேலே உயர்த்தவும்.",
+                    "தலையைச் சற்று மேலே தூக்கி 15-30 வினாடிகள் இருக்கவும்."
+                ],
+                p4Btn: "டைமர் தொடங்கு (3 நிமி)",
+                startBtn: "தொடங்கு",
+                pauseBtn: "நிறுத்து (Pause)",
+                resetBtn: "மீட்டமை",
+                doneAlert: "பயிற்சி முடிந்தது!"
+            },
+            en: {
+                appTitle: "🧘 Nalam Yoga",
+                appSub: "Your Personal Yoga Guide for Deep Sleep, Liver & Cholesterol Care",
+                langBtn: "தமிழ்",
+                secNight: "🌙 Night Routine & Deep Sleep",
+                secMorning: "☀️ Morning Routine - Fatty Liver & Cholesterol",
+                stepsHead: "How to perform?",
+                p1Title: "1. Shavasana",
+                p1Steps: [
+                    "Lie down flat on your back comfortably.",
+                    "Keep your arms and legs relaxed by your sides.",
+                    "Close your eyes and focus gently on your natural breathing."
+                ],
+                p1Btn: "Start Timer (5 min)",
+                p2Title: "2. Anulom Vilom",
+                p2Steps: [
+                    "Sit straight and close right nostril with right thumb.",
+                    "Inhale deeply through your left nostril.",
+                    "Close left nostril and exhale gently through right nostril."
+                ],
+                p2Btn: "Start Timer (5 min)",
+                p3Title: "3. Dhanurasana (Bow Pose)",
+                p3Steps: [
+                    "Lie on your stomach and bend your knees upward.",
+                    "Hold your ankles firmly with your hands.",
+                    "Inhale and lift your chest and thighs off the floor."
+                ],
+                p3Btn: "Start Timer (3 min)",
+                p4Title: "4. Bhujangasana (Cobra Pose)",
+                p4Steps: [
+                    "Lie face down with palms placed near your chest.",
+                    "Inhale and slowly raise your upper body up to the navel.",
+                    "Hold the posture gently for 15-30 seconds."
+                ],
+                p4Btn: "Start Timer (3 min)",
+                startBtn: "Start",
+                pauseBtn: "Pause",
+                resetBtn: "Reset",
+                doneAlert: "Practice Completed!"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ta' ? 'en' : 'ta';
+            const langData = content[currentLang];
+
+            document.getElementById('appTitle').innerText = langData.appTitle;
+            document.getElementById('appSub').innerText = langData.appSub;
+            document.getElementById('langBtn').innerText = langData.langBtn;
+            document.getElementById('secNight').innerText = langData.secNight;
+            document.getElementById('secMorning').innerText = langData.secMorning;
+            
+            document.querySelectorAll('.steps-head').forEach(el => el.innerText = langData.stepsHead);
+
+            document.getElementById('p1Title').innerText = langData.p1Title;
+            updateList('p1Steps', langData.p1Steps);
+            document.getElementById('p1Btn').innerText = langData.p1Btn;
+
+            document.getElementById('p2Title').innerText = langData.p2Title;
+            updateList('p2Steps', langData.p2Steps);
+            document.getElementById('p2Btn').innerText = langData.p2Btn;
+
+            document.getElementById('p3Title').innerText = langData.p3Title;
+            updateList('p3Steps', langData.p3Steps);
+            document.getElementById('p3Btn').innerText = langData.p3Btn;
+
+            document.getElementById('p4Title').innerText = langData.p4Title;
+            updateList('p4Steps', langData.p4Steps);
+            document.getElementById('p4Btn').innerText = langData.p4Btn;
+
+            document.getElementById('startBtn').innerText = langData.startBtn;
+            document.getElementById('resetBtn').innerText = langData.resetBtn;
+        }
+
+        function updateList(elementId, items) {
+            const list = document.getElementById(elementId);
+            list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+        }
+
+        // Timer Logic
         let timerInterval = null;
         let totalSeconds = 0;
         let initialSeconds = 0;
@@ -339,15 +577,15 @@
         function startTimer() {
             if (totalSeconds <= 0) return;
             isRunning = true;
-            document.getElementById('startBtn').innerText = 'நிறுத்து (Pause)';
+            document.getElementById('startBtn').innerText = content[currentLang].pauseBtn;
             timerInterval = setInterval(() => {
                 totalSeconds--;
                 updateDisplay();
                 if (totalSeconds <= 0) {
                     clearInterval(timerInterval);
                     isRunning = false;
-                    document.getElementById('startBtn').innerText = 'முடிந்தது!';
-                    alert('பயிற்சி முடிந்தது! நன்று.');
+                    document.getElementById('startBtn').innerText = content[currentLang].startBtn;
+                    alert(content[currentLang].doneAlert);
                 }
             }, 1000);
         }
@@ -355,7 +593,7 @@
         function pauseTimer() {
             clearInterval(timerInterval);
             isRunning = false;
-            document.getElementById('startBtn').innerText = 'தொடங்கு';
+            document.getElementById('startBtn').innerText = content[currentLang].startBtn;
         }
 
         function resetTimer() {
