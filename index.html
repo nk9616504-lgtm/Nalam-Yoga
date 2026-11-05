@@ -7,16 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2b593f;
-            --primary-light: #428560;
-            --accent: #88c999;
+            --primary: #1e3d2c;
+            --primary-light: #346349;
+            --accent: #52b788;
             --bg: #f4f7f5;
             --surface: #ffffff;
             --text: #1f2d26;
             --text-light: #5f7367;
             --border: #e0e8e3;
-            --skin: #f7d5b8;
-            --clothes: #3b7a57;
         }
 
         * {
@@ -36,7 +34,6 @@
             background: linear-gradient(135deg, #1e3d2c, #346349);
             color: white;
             padding: 25px 20px;
-            position: relative;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.12);
@@ -122,22 +119,25 @@
             color: var(--text-light);
         }
 
-        /* SVG Image Frame */
-        .svg-container {
+        /* Responsive Video Container */
+        .video-container {
+            position: relative;
             width: 100%;
-            height: 170px;
-            background-color: #eef5f0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
             margin: 12px 0;
-            border: 1px solid #dce8df;
+            background-color: #000;
         }
 
-        .svg-container svg {
-            width: 150px;
-            height: 130px;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .steps-box {
@@ -269,17 +269,8 @@
                         <div class="pose-sub">Corpse Pose</div>
                     </div>
                     
-                    <div class="svg-container">
-                        <svg viewBox="0 0 120 80">
-                            <!-- Mat -->
-                            <rect x="10" y="55" width="100" height="6" rx="3" fill="#a8d5ba"/>
-                            <!-- Body -->
-                            <ellipse cx="25" cy="50" rx="7" ry="6" fill="#f7d5b8"/> <!-- Head -->
-                            <rect x="32" y="46" width="35" height="10" rx="4" fill="#3b7a57"/> <!-- Torso -->
-                            <rect x="67" y="47" width="30" height="7" rx="3" fill="#2d5e43"/> <!-- Legs -->
-                            <!-- Arms -->
-                            <rect x="35" y="55" width="25" height="4" rx="2" fill="#f7d5b8"/>
-                        </svg>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/1VYlOKudV34" title="Shavasana Yoga Video" allowfullscreen></iframe>
                     </div>
 
                     <div class="steps-box">
@@ -304,17 +295,8 @@
                         <div class="pose-sub">Alternate Nostril Breathing</div>
                     </div>
 
-                    <div class="svg-container">
-                        <svg viewBox="0 0 120 90">
-                            <!-- Seated legs -->
-                            <path d="M30 75 Q60 85 90 75 Q60 65 30 75" fill="#2d5e43"/>
-                            <!-- Torso -->
-                            <path d="M48 45 L52 45 L55 70 L45 70 Z" fill="#3b7a57"/>
-                            <!-- Head -->
-                            <circle cx="50" cy="32" r="10" fill="#f7d5b8"/>
-                            <!-- Hand up to nose -->
-                            <path d="M52 50 L62 40 L55 35" stroke="#f7d5b8" stroke-width="4" stroke-linecap="round" fill="none"/>
-                        </svg>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/8VwufJrUhic" title="Anulom Vilom Yoga Video" allowfullscreen></iframe>
                     </div>
 
                     <div class="steps-box">
@@ -345,17 +327,8 @@
                         <div class="pose-sub">Bow Pose</div>
                     </div>
 
-                    <div class="svg-container">
-                        <svg viewBox="0 0 120 90">
-                            <!-- Arch Body -->
-                            <path d="M25 45 Q60 80 95 45" fill="none" stroke="#3b7a57" stroke-width="12" stroke-linecap="round"/>
-                            <!-- Head -->
-                            <circle cx="25" cy="38" r="8" fill="#f7d5b8"/>
-                            <!-- Legs/Feet -->
-                            <circle cx="95" cy="38" r="6" fill="#f7d5b8"/>
-                            <!-- Arms holding feet -->
-                            <path d="M30 48 Q60 30 90 42" stroke="#f7d5b8" stroke-width="4" fill="none"/>
-                        </svg>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/n4rJ0xH_l4Y" title="Dhanurasana Yoga Video" allowfullscreen></iframe>
                     </div>
 
                     <div class="steps-box">
@@ -380,17 +353,8 @@
                         <div class="pose-sub">Cobra Pose</div>
                     </div>
 
-                    <div class="svg-container">
-                        <svg viewBox="0 0 120 90">
-                            <!-- Lower body/Legs -->
-                            <rect x="20" y="62" width="55" height="8" rx="4" fill="#2d5e43"/>
-                            <!-- Lifted Torso -->
-                            <path d="M65 65 Q85 60 90 35" fill="none" stroke="#3b7a57" stroke-width="12" stroke-linecap="round"/>
-                            <!-- Head -->
-                            <circle cx="92" cy="26" r="8" fill="#f7d5b8"/>
-                            <!-- Arms support -->
-                            <path d="M75 55 L78 68" stroke="#f7d5b8" stroke-width="5" stroke-linecap="round"/>
-                        </svg>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/fOdrW7nf9gw" title="Bhujangasana Yoga Video" allowfullscreen></iframe>
                     </div>
 
                     <div class="steps-box">
